@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+	"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="role" namespace="/role" extends="json-default">
+		<action name="roleAddForm"  class="com.tarena.netctoss.action.role.RoleAddAction" method="init">
+				<result>/WEB-INF/role/role_add.jsp</result>
+		</action>
+		<action name="roleAdd" class="com.tarena.netctoss.action.role.RoleAddAction" method="add">
+			<result>/WEB-INF/role/role_add.jsp</result>
+		</action>
+		<action name="roleList" class="com.tarena.netctoss.action.role.RoleListAction">
+			<result>/WEB-INF/role/role_list.jsp</result>
+		</action>
+		<action name="roleDetail" class="com.tarena.netctoss.action.role.RoleDetailAction">
+			<result>/WEB-INF/role/role_modi.jsp</result>
+		</action>
+		<action name="roleModify" class="com.tarena.netctoss.action.role.RoleModifyAction">
+			<result>/WEB-INF/role/role_modi.jsp</result>
+		</action>
+		<action name="roleDelete" class="com.tarena.netctoss.action.role.RoleDeleteAction">
+			<result type="json">
+				<param name="root">ok</param>
+			</result>
+		</action>
+	</package>
+
+	
+	
+</struts>
