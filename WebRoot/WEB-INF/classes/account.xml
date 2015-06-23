@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+	"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+	<package name="account" namespace="/account" extends="json-default">
+		<action name="accountList" class="com.tarena.netctoss.action.AccountListAction">
+			<result>/WEB-INF/account/account_list.jsp</result>
+		</action>
+		<action name="accountDetail" class="com.tarena.netctoss.action.AccountDetailAction">
+			<result>/WEB-INF/account/account_detail.jsp</result>
+		</action>
+		<action name="deleteAccount" class="com.tarena.netctoss.action.SetStatusAccountAction" method="delete">
+			<result type="json">
+				<param name="root">ok</param>
+			</result>
+		</action>
+		<action name="checkLoginName" class="com.tarena.netctoss.action.CheckAccountExistsAction">
+			<result type="json">
+				<param name="root">ok</param>
+			</result>
+		</action>
+		<action name="saveAccount" class="com.tarena.netctoss.action.AccountSaveAcion">
+			<result type="redirectAction">accountList</result>
+		</action>
+		<action name="accountAddForm" class="com.tarena.netctoss.action.AccountAddFormAction">
+			<result>/WEB-INF/account/account_add.jsp</result>
+		</action>
+		<action name="checkIdcardExists" class="com.tarena.netctoss.action.CheckAccountIdcardAction">
+			<result type="json">
+				<param name="root">ok</param>
+			</result>
+		</action>
+		<action name="ModifyAccountForm" class="com.tarena.netctoss.action.AccountDetailAction">
+			<result>/WEB-INF/account/account_modi.jsp</result>
+		</action>
+		<action name="ModifyAccount" class="com.tarena.netctoss.action.AccountModifyAction">
+			<result type="redirectAction">accountList</result>
+		</action>
+		<action name="AccountListConditions" class="com.tarena.netctoss.action.AccountListForFindByConditionsAction">
+			<result>/WEB-INF/account/account_list.jsp</result>
+		</action>
+		<action name="startAccount" class="com.tarena.netctoss.action.SetStatusAccountAction" method="start">
+			<result type="json">
+				<param name="root">ok</param>
+			</result>
+		</action>
+		<action name="stopAccount" method="stop" class="com.tarena.netctoss.action.SetStatusAccountAction">
+			<result type="json">
+				<param name="root">ok</param>
+			</result>
+		</action>
+	</package>
+	
+</struts>

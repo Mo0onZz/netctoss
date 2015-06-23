@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+	"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="service" namespace="/service" extends="json-default">
+		<action name="serviceList" class="com.tarena.netctoss.action.service.ServiceListAction">
+			<result>/WEB-INF/service/service_list.jsp</result>
+		</action>
+		<action name="serviceDetail" class="com.tarena.netctoss.action.service.ServiceLineDetail">
+			<result name="success">/WEB-INF/service/service_detail.jsp</result>
+		</action>
+		<action name="serviceAddForm" class="com.tarena.netctoss.action.service.ServiceAddFormAction">
+			<result>/WEB-INF/service/service_add.jsp</result>
+		</action>
+		<action name="saveService" class="com.tarena.netctoss.action.service.ServiceAddAction">
+			<result name="success" type="redirectAction">serviceList</result>
+		</action>
+		<action name="getLonginName" class="com.tarena.netctoss.action.service.findAccontMsg" method="findLoginName">
+			<result type="json">
+				<param name="includeProperties">loginName,accountId</param>
+			</result>
+		</action>
+		<action name="checkLoginName" class="com.tarena.netctoss.action.service.findAccontMsg" method="checkLoginName">
+			<result type="json">
+				<param name="root">accountId</param>
+			</result>
+		</action>
+		<action name="serviceAdd" class="com.tarena.netctoss.action.service.ServiceAddAction">
+			<result name="success" type="redirectAction">serviceList</result>
+		</action>
+		<action name="checkIp" class="com.tarena.netctoss.action.service.findAccontMsg" method="checkUnixHost">
+			<result type="json">
+				<param name="root">ok</param>
+			</result>
+		</action>
+		<action name="checkOsAndIp" class="com.tarena.netctoss.action.service.findAccontMsg" method="checkOsAndIp">
+			<result type="json">
+				<param name="root">ok</param>
+			</result>
+		</action>
+		<action name="ServiceModifyForm" class="com.tarena.netctoss.action.service.ServiceModifyFormAction">
+			<result>
+				/WEB-INF/service/service_modi.jsp
+			</result>
+		</action>
+		<action name="serviceModify" class="com.tarena.netctoss.action.service.ServiceModifyAction">
+			<result type="redirectAction">serviceList</result>
+		</action>
+		<action name="serviceDelete" class="com.tarena.netctoss.action.service.ServiceDeleteAction">
+			<result type="json">
+				<param name="root">ok</param>
+			</result>
+		</action>
+		<action name="stopService" class="com.tarena.netctoss.action.service.ServiceSetStatusAction" method="stop">
+			<result type="json">
+				<param name="root">ok</param>
+			</result>
+		</action>
+		<action name="startService" class="com.tarena.netctoss.action.service.ServiceSetStatusAction" method="start">
+			<result type="json">
+				<param name="root">ok</param>
+			</result>
+		</action>
+
+	</package>
+	
+</struts>
